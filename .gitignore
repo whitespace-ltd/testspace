@@ -4,7 +4,8 @@
 # Useful when git cloning an app and not wanting
 # the gems to be installed globally.
 # Can be uncommented if really necessary.
-# /.bundle
+.bundle
+.rbricks
 
 # Ignore the bundle directory itself.
 /vendor/bundle
