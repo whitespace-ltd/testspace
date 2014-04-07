@@ -1,12 +1,12 @@
 class PagesController < ApplicationController
-  before_action :authenticate_user!, only: [
-    :inside
-  ]
+  respond_to :html, :json
+	before_action :authenticate_user!, only: [:inside]
 
   def home
   end
-  
+
   def inside
-  end 
-    
+  	respond_with current_user
+  end
+
 end
