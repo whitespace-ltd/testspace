@@ -36,9 +36,6 @@ describe Devise::RegistrationsController do
       it "should change the user's username" do
         patch :update, id: @user, user: attributes_for(:user_params, username: 'new_username')
         updated_user = assigns(:user)
-        p '-------------------------------------------------------------------'
-        p @user
-        p '-------------------------------------------------------------------'
         @user.reload
         expect(@user.username).to eq(updated_user.username)
       end
