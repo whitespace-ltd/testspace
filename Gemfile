@@ -43,6 +43,8 @@ group :development, :test do
   gem 'rails_layout', '~> 0.5.11'  # Bootstrap 3 layout generator
 end
 
+gem 'angularjs-rails'
+gem 'ng-match'
 gem 'bootstrap-sass', '~> 3.0.3.0'
 
 

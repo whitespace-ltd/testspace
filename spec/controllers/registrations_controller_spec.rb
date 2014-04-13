@@ -33,11 +33,10 @@ describe Devise::RegistrationsController do
       sign_in @user
     end
     describe "Success" do
-      it "should change the user's username" do
-        patch :update, id: @user, user: attributes_for(:user_params, username: 'new_username')
-        updated_user = assigns(:user)
+      it "should change the user's email" do
+        put :update, id: @user, user: { email: "newemail@example.com", current_password: 'secret'}
         @user.reload
-        expect(@user.username).to eq(updated_user.username)
+        expect(@user.email).to eq("newemail@example.com")
       end
     end
   end

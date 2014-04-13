@@ -25,6 +25,7 @@ GEM
       multi_json (~> 1.3)
       thread_safe (~> 0.1)
       tzinfo (~> 0.3.37)
+    angularjs-rails (1.2.16)
     arel (4.0.2)
     bcrypt (3.1.7)
     bcrypt-ruby (3.1.5)
@@ -109,6 +110,8 @@ GEM
     mini_portile (0.5.3)
     minitest (4.7.5)
     multi_json (1.9.2)
+    ng-match (0.0.3)
+      railties (>= 3.1)
     nio4r (1.0.0)
     nokogiri (1.6.1)
       mini_portile (~> 0.5.0)
@@ -205,6 +208,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  angularjs-rails
   bcrypt-ruby (~> 3.1.2)
   bootstrap-sass (~> 3.0.3.0)
   capybara (~> 2.2.1)
@@ -218,6 +222,7 @@ DEPENDENCIES
   jbuilder (~> 1.5.3)
   jquery-rails (~> 3.0.4)
   kaminari (~> 0.15.0)
+  ng-match
   pg
   rails (= 4.0.4)
   rails_12factor

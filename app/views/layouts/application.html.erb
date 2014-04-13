@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html ng-app="testspaceApp">
 <head>
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
   <title><%= @title || "Testspace" %></title>
@@ -13,25 +13,25 @@
     <header>
       <%= render 'layouts/navigation' %>
     </header>
-      
+
     <div class="container">
-       
+
       <div class="row">
         <div class="col-sm-6 col-sm-offset-3 text-center">
           <%= render 'layouts/messages' %>
         </div>
       </div>
-      
+
       <div class="row">
         <div class="col-sm-12">
           <%= yield %>
-        </div>     
-      </div>  
-      
+        </div>
+      </div>
+
     </div>
   </div>
-    
-  <%= render 'layouts/footer' %>    
+
+  <%= render 'layouts/footer' %>
 
 </body>
 </html>
