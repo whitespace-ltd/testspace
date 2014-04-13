@@ -1,63 +1,78 @@
-<div class="row">
+<div ng-controller="registrationController" class="form row">
+  <div class="col-sm-6 col-sm-offset-3 text-center">
+    <div class="alert alert-danger">
+      <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+      <div class="user-error-content">
+        <ul class="errors-list"></ul>
+      </div>
+    </div>
+  </div>
+
   <div class="col-sm-6 ">
     <h1>Edit your profile</h1>
 
-    <%= form_for(resource, :as => resource_name, 
-    :url => registration_path(resource_name), 
-    :html => { :method => :put, role: "form" }) do |f| %>
-  
+    <%= form_for(resource, :as => resource_name,
+    :url => '', html: { name: "formData", :'ng-submit' => "update(formData.$valid)", novalidate: true, role: "form" }) do |f| %>
+
       <%= devise_error_messages! %>
 
       <div class="form-group">
         <%= f.label :email %>
         <div class="row">
-          <div class="col-sm-6">      
-            <%= f.email_field :email, :autofocus => true, class: "form-control" %>  
+          <div class="col-sm-6">
+            <%= f.email_field :email, :autofocus => true, class: "form-control" , "ng-model" => "email", required: "required", "ng-required" => "true", "ng-minlength" => "6", 'ng-pattern' => "/([^@\\s]+)@((?:[-a-z0-9]+\\.)+[a-z]{2,})/" %>
+
+            <p ng-show="formData['user[email]'].$error.pattern && !formData['user[email]'].$pristine" class="help-block">enter correct email</p>
+            <p ng-show="formData['user[email]'].$error.required && !formData['user[email]'].$pristine" class="help-block">email can't be empty</p>
           </div>
         </div>
       </div>
 
       <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
       <div class="row">
-        <div class="col-sm-6">     
+        <div class="col-sm-6">
           <p>Currently waiting confirmation for: <%= resource.unconfirmed_email %></p>
         </div>
       </div>
       <% end %>
 
       <div class="form-group">
+        <div class="row">
+          <div class="col-sm-6">
             <%= f.label :password %> <i><small>(leave blank if you don't want to change it)</small></i>
-        <div class="row">
-          <div class="col-sm-6">
-            <%= f.password_field :password, :autocomplete => "off", class: "form-control" %>
+            <%= f.password_field :password, class: "form-control", "ng-minlength" => "4", "ng-model" => "password" %>
+            <p ng-show="formData['user[password]'].$error.minlength && !formData['user[password]'].$pristine" class="help-block">Password is to short (minimum is 4 characters)</p>
           </div>
         </div>
       </div>
 
       <div class="form-group">
+        <div class="row">
+          <div class="col-sm-6">
             <%= f.label :password_confirmation %>
-        <div class="row">
-          <div class="col-sm-6">
-            <%= f.password_field :password_confirmation, class: "form-control" %>
+            <%= f.password_field :password_confirmation, class: "form-control", "ng-model" => "password_confirmation", "ng-match" => "password"%>
+            <p ng-show="formData['user[password_confirmation]'].$error.match && !formData['user[password_confirmation]'].$pristine" class="help-block">Password doesn't match</p>
           </div>
         </div>
       </div>
 
       <div class="form-group">
-            <%= f.label :current_password %> <i><small>(we need your current password to confirm your changes)</small></i>
         <div class="row">
           <div class="col-sm-6">
-            <%= f.password_field :current_password, class: "form-control" %>
+            <%= f.label :current_password %> <i><small>(we need your current password to confirm your changes)</small></i>
+            <%= f.password_field :current_password, class: "form-control", required: "required", "ng-required" => "true", "ng-minlength" => "4", "ng-model" => "current_password" %>
+            <p ng-show="formData['user[current_password]'].$error.required && !formData['user[current_password]'].$pristine" class="help-block">Password can't be empty</p>
+            <p ng-show="formData['user[current_password]'].$error.minlength && !formData['user[current_password]'].$pristine" class="help-block">Password is to short (minimum is 4 characters)</p>
           </div>
         </div>
       </div>
 
       <div class="row">
         <div class="col-sm-6">
-          <%= f.submit "Update", class: "btn btn-primary" %> - <%= link_to "Cancel", inside_path %>
+          <%= f.submit "Update", class: "btn btn-primary", "ng-disabled" => "!formData.$valid"%> - <%= link_to "Cancel", inside_path %>
         </div>
-      </div>    
- 
+      </div>
+
       <% end %>
     </div>
   </div>

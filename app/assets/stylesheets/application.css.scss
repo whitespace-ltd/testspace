@@ -5,3 +5,14 @@
  */
 @import "framework_and_overrides";
 
+.form .alert{
+  display: none;
+  text-align: center;
+  .errors-list {
+    list-style-type: none;
+  }
+}
+
+p.help-block {
+  color: red;
+}
